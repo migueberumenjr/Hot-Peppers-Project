@@ -3,7 +3,7 @@
   <head>
     <!-- Meta Tag -->
     <meta charset="utf-8">
-    <title>Comparing Hot Peppers around the World</title>
+    <title>Hot Peppers</title>
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" type="text/css" href="pepperstylesheet.css">
   </head>
@@ -11,7 +11,9 @@
       
   <body>
     <script type= "text/javascript" src="http://d3js.org/d3.v3.min.js"></script> 
-    <h1 style = "text-align:center; color:steelblue"><bold> Comparing Hot Peppers around the World </bold></h1>
+    <h1 style = "text-align:center; color:steelblue">
+        <bold> Comparing Hot Peppers around the World </bold>
+    </h1>
       
     <div id="pepper"></div>
       <ul class="tab">
@@ -51,26 +53,25 @@
         d3.select('#slider12').call(d3.slider().scale(d3.scale.ordinal().domain(["Hybrid", "Pure", "Man-made", "All Types"]).rangePoints([0, 1], 0.5)).axis(d3.svg.axis()).snap(true).value("Hybrid"));
     </script>
       
-
     <!-- Submission Info -->
     <h4>Created by "Miguel Berumen, Ernesto Hernandez, Josselin Vergaray" </h4>
       
-    <h4>Description: The x-axis represents the spiciness level of a pepper</h4>
+    <h4>Description: The size of the circles represent how spicy the peppers are</h4>
    
     <!-- Create a list using <ul> and <li> tag -->   
     <h4>Files Submitted:</h4>
     
     <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <li>pepperhtml.html</li>
+      <li>pepperjava.js</li>
+      <li>peppers.csv</li>
+      <li>pepperstylesheet.css</li>
     </ul>
       
-    <h4> Sources: </h4>
-       <ul>
-      <li></li>
-      <li></li>
+    <h4> Sources:</h4>
+    <ul>
+      <li>http://stackoverflow.com/questions/31367095/understanding-a-d3-multi-foci-force-layout</li>
+      <li>https://github.com/MasterMaps/d3-slider</li>
     </ul>
       
   </body>
