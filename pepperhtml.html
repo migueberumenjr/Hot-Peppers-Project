@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <!-- Meta Tag -->
+    <meta charset="utf-8">
+    <title>Comparing Hot Peppers around the World</title>
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="pepperstylesheet.css">
+  </head>
+    <!-- D3.js Source -->
+      
+  <body>
+    <script type= "text/javascript" src="http://d3js.org/d3.v3.min.js"></script> 
+    <h1 style = "text-align:center; color:steelblue"><bold> Comparing Hot Peppers around the World </bold></h1>
+      
+    <div id="pepper"></div>
+      <ul class="tab">
+          <li><a href="#" class="tablinks" onclick="rearrange(event, 'Color')">Color</a></li>
+          <li><a href="#" class="tablinks" onclick="rearrange(event, 'Origin')">Origin</a></li>
+          <li><a href="#" class="tablinks" onclick="rearrange(event, 'Species')">Species</a></li>
+      </ul>
+      
+      <div id="Color" class="tabcontent">
+          <h3>Rearrange visualization by color of peppers</h3>
+      </div>
+      <div id="Origin" class="tabcontent">
+        <h3>Rearrange visualization by origin(continent and/or country) of pepper</h3> 
+      </div>
+      <div id="Species" class="tabcontent">
+        <h3>Rearrange visualization by species of peppers</h3>
+      </div>
+    <script src = "pepperjava.js"></script>
+    <script src = "slider.js"></script>
+    <div class="wrapper">
+            <div id="slider12"></div>
+    </div>
+    <script>
+        function rearrange(evt, selection) {
+        var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tabcontent.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(selection).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        d3.select('#slider12').call(d3.slider().scale(d3.scale.ordinal().domain(["Hybrid", "Pure", "Man-made", "All Types"]).rangePoints([0, 1], 0.5)).axis(d3.svg.axis()).snap(true).value("Hybrid"));
+    </script>
+      
+
+    <!-- Submission Info -->
+    <h4>Created by "Miguel Berumen, Ernesto Hernandez, Josselin Vergaray" </h4>
+      
+    <h4>Description: The x-axis represents the spiciness level of a pepper</h4>
+   
+    <!-- Create a list using <ul> and <li> tag -->   
+    <h4>Files Submitted:</h4>
+    
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+      
+    <h4> Sources: </h4>
+       <ul>
+      <li></li>
+      <li></li>
+    </ul>
+      
+  </body>
+</html>
