@@ -21,12 +21,6 @@ div.tooltip {
  /*  pointer-events: none;	This line needs to be removed */
 }
 
-text {
-  font: 11px 'Open Sans', sans-serif;
-  text-anchor: middle;
-  pointer-events: none;
-  fill: black;
-}
 /*===========Slider Css================*/
 body {
       font-family: Verdana,Arial,sans-serif;
