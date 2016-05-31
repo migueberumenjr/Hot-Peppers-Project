@@ -1,10 +1,22 @@
-name,min,max,origin,species,color
-banana pepper,0,500,South America,annuum,yellow
-anaheim pepper500,500,2500,Mexico,annuum,green
-fresno pepper,2500,10000,USA,annuum,red
-thai pepper,50000,100000,Thailand,annuum,red
-ghost pepper,855000,1041427,India,chinense,red
-ancho pepper,1000,1500,Mexico,annuum,red
-poblano pepper,1000,1500,Mexico,annuum,green
-guindilla pepper,1000,2000,Spain,annuum,green
-peppadew pepper,1100,1200,Africa,baccatum,orange
+name,min,max,species,origin,color
+banana pepper,0,500,annuum,South America,yellow
+anaheim pepper500,500,2500,annuum,Mexico,green
+fresno pepper,2500,10000,annuum,USA,red
+thai pepper,50000,100000,annuum,Thailand,red
+ghost pepper,855000,1041427,chinense,India,red
+ancho pepper,1000,1500,annuum,Mexico,red
+poblano pepper,1000,1500,annuum,Mexico,green
+guindilla pepper,1000,2000,annuum,Spain,green
+peppadew pepper,1100,1200,baccatum,Africa,orange
+hatch pepper,1000,8000,annuum,USA,green
+cherry bomb pepper,2500,5000,annuum,USA,red
+jalepeno pepper,2500,8000,annuum,Mexico,green
+chipotle pepper,2500,8000,annuum,Mexico,red
+fish pepper,5000,30000,annuum,USA,red
+serrano pepper,10000,23000,annuum,USA,green
+chile de arbol,15000,30000,annuum,Mexico,red
+tabasco pepper,30000,50000,frutescens,Costa Rica,red
+cayenne pepper,30000,50000,annuum,French Guyana,red
+datil pepper,100000,300000,chinense,USA,red
+habenero pepper,100000,350000,chinense,South America,orange
+trinidad moruga scorion,1200000,2000000,chinense,Trinidad,orange

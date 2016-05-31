@@ -6,6 +6,7 @@
     <title>Hot Peppers</title>
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" type="text/css" href="pepperstylesheet.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
   </head>
     <!-- D3.js Source -->
       
@@ -17,9 +18,9 @@
       
     <div id="pepper"></div>
       <ul class="tab">
-          <li><a href="#" class="tablinks" onclick="rearrange(event, 'Color')">Color</a></li>
-          <li><a href="#" class="tablinks" onclick="rearrange(event, 'Origin')">Origin</a></li>
-          <li><a href="#" class="tablinks" onclick="rearrange(event, 'Species')">Species</a></li>
+          <li><a href="#" class="tablinks" id="color" onclick="rearrange(event, 'Color')">Color</a></li>
+          <li><a href="#" class="tablinks" id="origin" onclick="rearrange(event, 'Origin')">Origin</a></li>
+          <li><a href="#" class="tablinks" id="species" onclick="rearrange(event, 'Species')">Species</a></li>
       </ul>
       
       <div id="Color" class="tabcontent">
@@ -31,6 +32,7 @@
       <div id="Species" class="tabcontent">
         <h3>Rearrange visualization by species of peppers</h3>
       </div>
+      
     <script src = "pepperjava.js"></script>
     <script src = "slider.js"></script>
     <div class="wrapper">
