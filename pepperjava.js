@@ -9,6 +9,7 @@ var path,
     force,
     nodes,
     locations,
+    color,
     m,
     n,
     newlocations;
@@ -73,8 +74,17 @@ function create_graph(category) {
     
         
         //Define Color
-        var color = d3.scale.category20()
+        
+        if (category === "color") {
+            color = d3.scale.ordinal()
+                .range(["#FFFF00","#008000","#FF0000", "#FFA500"]);
+        }
+        
+        else {
+        
+        color = d3.scale.category20()
             .domain(d3.range(m));
+        }
         
         
         var x = d3.scale.ordinal()
