@@ -135,10 +135,13 @@ function create_graph(category) {
           .attr("transform", "translate(0, " + height * 0.9 + ")")
           .call(legend);
         gLegend.selectAll(".tick text")
-          .attr("fill", function(d, i) {
-            return color(i);
+          //.attr("fill", function(d, i) {
+        .attr("fill", function(d, i) {
+            return '#000000';
           });
-
+        
+        var reddd;
+        
 
         circle = svg.append("g").selectAll("circle")
           .data(nodes)
@@ -146,10 +149,17 @@ function create_graph(category) {
           .attr("r", function(d) {
             return d.radius;
           })
-          .style("fill", function(d) {
-            return d.color;
+          .style("fill", function(d){
+            if (d.actcolor == "red"){
+                return '#FF0000';
+            }else if (d.actcolor == "green"){
+                return '#009933';
+            }else if (d.actcolor == "yellow"){
+                return '#ffd633';
+            }else if (d.actcolor == "orange"){
+                return '#ff8000';
+            }
           })
-        
             .on('mouseover', function(d) {
                 div.transition()
                     .duration(200)
