@@ -6,6 +6,18 @@ var width = 1500,
 
 var path,circle,force,nodes,locations,color,m,n,newlocations;
 
+var div = d3.select("body").append("div")
+    .attr('class', 'tooltip')
+    .style("opacity", 0);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+/******All of the following code up to function create_graph() is for the buttons.
+    The same code is copied in the codeChange function because it doesn't
+    work without it
+******/
 var bWidth= 100; //button width
 var bHeight= 65; //button height
 var bSpace= 20; //space between buttons
@@ -16,17 +28,9 @@ var y0= 10; //y offset
 var labels= ["Color","Origin","Species"];
 
 //colors for different button states 
-var defaultColor= "#FF9922"
-var hoverColor= "#EEEE33"
-var pressedColor= "#FF0000"
-
-var div = d3.select("body").append("div")
-    .attr('class', 'tooltip')
-    .style("opacity", 0);
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+var defaultColor= "orange"
+var hoverColor= "yellow"
+var pressedColor= "red"
 
 //container for all buttons
 var allButtons= svg.append("g")
@@ -102,6 +106,7 @@ function create_graph(category) {
             origin: d.origin,
             species: d.species,
             color: d.color,
+            picture: d.picture
         };
     },
 
@@ -169,7 +174,7 @@ function create_graph(category) {
                 color: color(i),
                 cx: x(newlocations[i]),
                 cy: height / 2,
-                image: "http://sweetclipart.com/multisite/sweetclipart/files/red_chili_pepper.png"
+                picture: d.picture
             };
         });
 
@@ -212,7 +217,7 @@ function create_graph(category) {
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div.html("Name: " + d.name + "<br/>Minimum SHU: " + d.min + "<br/>Maximum SHU: " + d.max + "<br/>Average SHU: " + d.avg + "<br/>Origin: " + d.origin + "<br/>Species: " + d.species + "<br/>Color: " + d.actcolor + "<br/>")
+                div.html("<img src=" + d.picture + ">" + "<br/>Name: " + d.name + "<br/>Minimum SHU: " + d.min + "<br/>Maximum SHU: " + d.max + "<br/>Average SHU: " + d.avg + "<br/>Origin: " + d.origin + "<br/>Species: " + d.species + "<br/>Color: " + d.actcolor + "<br/>")
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY) + "px");
             })
@@ -297,7 +302,8 @@ function clear_graph() {
 function codeChange(category) {
     clear_graph();
     create_graph(category);
-    
+
+/*****This chunk of code is the same as the code before the create_graph() function*****/
 //container for all buttons
 var allButtons= svg.append("g")
     .attr("id","allButtons") 
