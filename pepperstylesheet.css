@@ -13,18 +13,16 @@ circle {
 
 /*===========Tooltip CSS================*/
 div.tooltip {
+    line-height: 1;
+    border-right: 10px;
+    top: 100px;
     background: #FF4500;
     border-radius: 15px 50px 30px 5px;
-    color: #fff;
+    color: #000;
     display: block;
-    opacity: 0;
     padding: 10px;
-    pointer-events: none;
     position: absolute;
     width: 210px;
-    height: 165px;
-    display: flex;
-    align-items: center;
     -webkit-transition: all .25s ease-out;
     -moz-transition: all .25s ease-out;
     -ms-transition: all .25s ease-out;
