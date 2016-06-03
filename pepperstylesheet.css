@@ -103,3 +103,119 @@ h2 {
     border: 1px solid #aaaaaa;
     z-index: 2;
 }
+/*-----------footer----------*/
+
+/*entire footer background color*/
+footer{
+    width: 100%;
+    background-color: #484848;
+    padding: 200px 0px;
+}
+/*Web links colors*/
+a:link {
+    color: white;  
+}
+/* visited link */
+a:visited {
+    color: white;
+}
+/* mouse over link */
+a:hover {
+    color: gray;
+}
+.footer_wrapper{
+    width: 960px;
+}
+/*------------footer1--------------*/
+/*Title of first column*/
+.footer1 nav h4{
+    font-weight: bold;
+    margin-top: -133px;
+    margin-left: 500px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;
+    
+}
+/* first column content*/
+.footer1 nav ul{
+    margin-top: -10px;
+    list-style-type: circle;
+    margin-left: 500px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 17px;
+    color: #fff;
+    
+}
+/*styles block*/
+.footer1 nav ul li {
+    /*display:block;*/
+   float:middle;
+   width:300px; 
+   padding: 5px; 
+    
+}
+/*-----------footer2----------*/
+/*Title of second column*/
+.footer_wrapper nav h4{
+    font-weight: bold;
+    margin-top: -140px;
+    margin-left: 60px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;    
+}
+/*column content*/
+.footer_wrapper nav ul{
+    margin-top: -10px;
+    list-style-type: circle;
+    margin-left: 60px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 17px;
+    color: #fff;
+    
+}
+.footer_wrapper nav ul li {
+   float:middle;
+   width:300px; 
+   padding: 5px; 
+    
+}
+/*-----------footer3----------*/
+/*Title of second column*/
+.footer3 nav h4{
+    font-weight: bold;
+    margin-top: -163px;
+    margin-left: 900px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;    
+}
+/*column content*/
+.footer3 nav ul{
+    margin-top: -10px;
+    list-style-type: circle;
+    margin-left: 900px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 17px;
+    color: #fff;
+    
+}
+.footer3 nav ul li {
+   float:middle;
+   width:300px; 
+   padding: 5px; 
+    
+}
