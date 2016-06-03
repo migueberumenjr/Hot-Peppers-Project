@@ -1,5 +1,5 @@
 //Define Margin
-var width = 1500,
+var width = document.getElementById('container').offsetWidth,
     height = 800,
     padding = 6 // separation between nodes
     maxRadius = 12;
@@ -9,14 +9,10 @@ var path,circle,force,nodes,locations,color,m,n,newlocations;
 var div = d3.select("body").append("div")
     .attr('class', 'tooltip')
     .style("opacity", 0);
-//zoom 
-var zoom = d3.behavior.zoom()
-    .scaleExtent([0.5, 5])
-    .on("zoom", zoomed);
+
 var svg = d3.select("body").append("svg")
     .attr("width", width)
-    .attr("height", height)
-    .call(zoom);
+    .attr("height", height);
 
 /******All of the following code up to function create_graph() is for the buttons.
     The same code is copied in the codeChange function because it doesn't
@@ -32,9 +28,9 @@ var y0= 10; //y offset
 var labels= ["Color","Origin","Species"];
 
 //colors for different button states 
-var defaultColor= "Orange"
-var hoverColor= "Yellow"
-var pressedColor= "Red"
+var defaultColor= "orange"
+var hoverColor= "yellow"
+var pressedColor= "red"
 
 //container for all buttons
 var allButtons= svg.append("g")
@@ -204,16 +200,16 @@ function create_graph(category) {
             .data(nodes)
             .enter().append("circle")
             .style("fill", function(d){
-                if (d.actcolor == "Red"){
+                if (d.actcolor == "red"){
                     return '#FF0000';
                 }
-                else if (d.actcolor == "Green"){
+                else if (d.actcolor == "green"){
                     return '#009933';
                 }
-                else if (d.actcolor == "Yellow"){
+                else if (d.actcolor == "yellow"){
                     return '#ffd633';
                 }
-                else if (d.actcolor == "Orange"){
+                else if (d.actcolor == "orange"){
                     return '#ff8000';
                 }
             })
@@ -239,11 +235,9 @@ function create_graph(category) {
                 var i = d3.interpolate(0, d.radius);
                 return function(t) { return d.radius = i(t); };
             });
-    });
-}
-function zoomed() {
-    circle.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-}
+    } 
+)}
+           
 function tick(e) {
     circle.each(gravity(.2 * e.alpha))
         .each(collide(.5))
@@ -302,76 +296,12 @@ function clear_graph() {
     nodes = {};
     links = [];
     newlocations = [];
-    svg.selectAll('g').remove();
+    svg.selectAll('.tick text').remove();
+    svg.selectAll('circle').remove();
+    
 }
 
 function codeChange(category) {
     clear_graph();
     create_graph(category);
-
-/*****This chunk of code is the same as the code before the create_graph() function*****/
-//container for all buttons
-var allButtons= svg.append("g")
-    .attr("id","allButtons") 
-
-//groups for each button (which will hold a rect and text)
-var buttonGroups= allButtons.selectAll("g.button")
-    .data(labels)
-    .enter()
-    .append("g")
-    .attr("class","button")
-    .style("cursor","pointer")
-    .on("click",function(d,i) {
-        updateButtonColors(d3.select(this), d3.select(this.parentNode))
-        if (d === "Color")  {
-            codeChange("color");
-        }
-        else if (d === "Origin") {
-            codeChange("origin");
-        }
-        else {
-            codeChange("species");
-        }
-    })
-    .on("mouseover", function() {
-        if (d3.select(this).select("rect").attr("fill") != pressedColor) {
-            d3.select(this)
-                .select("rect")
-                .attr("fill",hoverColor);
-        }
-    })
-    .on("mouseout", function() {
-        if (d3.select(this).select("rect").attr("fill") != pressedColor) {
-            d3.select(this)
-                .select("rect")
-                .attr("fill",defaultColor);
-        }
-    })
-
-    //adding a rect to each toggle button group
-    //rx and ry give the rect rounded corner
-    buttonGroups.append("rect")
-        .attr("class","buttonRect")
-        .attr("width",bWidth)
-        .attr("height",bHeight)
-        .attr("x",function(d,i) {return x0+(bWidth+bSpace)*i;})
-        .attr("y",y0)
-        .attr("rx",5) //rx and ry give the buttons rounded corners
-        .attr("ry",5)
-        .attr("fill",defaultColor)
-
-    //adding text to each toggle button group, centered 
-    //within the toggle button rect
-    buttonGroups.append("text")
-        .attr("class","buttonText")
-        .attr("font-family","FontAwesome")
-        .attr("font-size", "22px")
-        .attr("x",function(d,i) {
-            return x0 + (bWidth+bSpace)*i + bWidth/2;
-        })
-        .attr("y",y0+bHeight/2)
-        .attr("text-anchor","middle")
-        .attr("dominant-baseline","central")
-        .attr("fill","black")
-        .text(function(d) {return d;})
 }
