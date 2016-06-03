@@ -1,21 +1,21 @@
 name,min,max,species,origin,color,picture
-banana pepper,0,500,annuum,South America,yellow,BananaPepper.png
-anaheim pepper500,500,2500,annuum,Mexico,green,AnaheimPepper.png
-fresno pepper,2500,10000,annuum,USA,red,FresnoPepper.png
-thai pepper,50000,100000,annuum,Thailand,red,ThaiPepper.png
-ghost pepper,855000,1041427,chinense,India,red,GhostPepper.png
-poblano pepper,1000,1500,annuum,Mexico,green,PoblanoPepper.png
-guindilla pepper,1000,2000,annuum,Spain,green,GuindillaPepper.png
-peppadew pepper,1100,1200,baccatum,Africa,red,PeppadewPepper.png
-hatch pepper,1000,8000,annuum,USA,green,HatchPepper.png
-cherry bomb pepper,2500,5000,annuum,USA,red,CherryBombPepper.png
-jalapeno pepper,2500,8000,annuum,Mexico,green,JalapenoPepper.png
-chipotle pepper,2500,8000,annuum,Mexico,red,ChipotlePepper.png
-fish pepper,5000,30000,annuum,USA,red,FishPepper.png
-serrano pepper,10000,23000,annuum,USA,green,SerranoPepper.png
-chile de arbol,15000,30000,annuum,Mexico,red,ChileDeArbol.png
-tabasco pepper,30000,50000,frutescens,Costa Rica,red,TabascoPepper.png
-cayenne pepper,30000,50000,annuum,French Guyana,red,CayennePepper.png
-datil pepper,100000,300000,chinense,USA,yellow,DatilPepper.png
-habanero pepper,100000,350000,chinense,South America,orange,HabaneorPepper.png
-trinidad moruga scorpion,1200000,2000000,chinense,Trinidad,red,TrinidadMorugaScorpion.png
+Banana pepper,0,500,Annuum,South America,Yellow,BananaPepper.png
+Anaheim pepper,500,2500,Annuum,Mexico,Green,AnaheimPepper.png
+Fresno pepper,2500,10000,Annuum,USA,Red,FresnoPepper.png
+Thai pepper,50000,100000,Annuum,Thailand,Red,ThaiPepper.png
+Ghost pepper,855000,1041427,Chinense,India,Red,GhostPepper.png
+Poblano pepper,1000,1500,Annuum,Mexico,Green,PoblanoPepper.png
+Guindilla pepper,1000,2000,Annuum,Spain,Green,GuindillaPepper.png
+Peppadew pepper,1100,1200,Baccatum,Africa,Red,PeppadewPepper.png
+Hatch pepper,1000,8000,Annuum,USA,Green,HatchPepper.png
+Cherry bomb pepper,2500,5000,Annuum,USA,Red,CherryBombPepper.png
+Jalapeno pepper,2500,8000,Annuum,Mexico,Green,JalapenoPepper.png
+Chipotle pepper,2500,8000,Annuum,Mexico,Red,ChipotlePepper.png
+Fish pepper,5000,30000,Annuum,USA,Red,FishPepper.png
+Serrano pepper,10000,23000,Annuum,USA,Green,SerranoPepper.png
+Chile de arbol,15000,30000,Annuum,Mexico,Red,ChileDeArbol.png
+Tabasco pepper,30000,50000,Frutescens,Costa Rica,Red,TabascoPepper.png
+Cayenne pepper,30000,50000,Annuum,French Guyana,Red,CayennePepper.png
+Datil pepper,100000,300000,Chinense,USA,Yellow,DatilPepper.png
+Habanero pepper,100000,350000,Chinense,South America,Orange,HabaneorPepper.png
+Trinidad moruga scorpion,1200000,2000000,Chinense,Trinidad,Red,TrinidadMorugaScorpion.png

@@ -9,10 +9,14 @@ var path,circle,force,nodes,locations,color,m,n,newlocations;
 var div = d3.select("body").append("div")
     .attr('class', 'tooltip')
     .style("opacity", 0);
-
+//zoom 
+var zoom = d3.behavior.zoom()
+    .scaleExtent([0.5, 5])
+    .on("zoom", zoomed);
 var svg = d3.select("body").append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .call(zoom);
 
 /******All of the following code up to function create_graph() is for the buttons.
     The same code is copied in the codeChange function because it doesn't
@@ -28,9 +32,9 @@ var y0= 10; //y offset
 var labels= ["Color","Origin","Species"];
 
 //colors for different button states 
-var defaultColor= "orange"
-var hoverColor= "yellow"
-var pressedColor= "red"
+var defaultColor= "Orange"
+var hoverColor= "Yellow"
+var pressedColor= "Red"
 
 //container for all buttons
 var allButtons= svg.append("g")
@@ -200,16 +204,16 @@ function create_graph(category) {
             .data(nodes)
             .enter().append("circle")
             .style("fill", function(d){
-                if (d.actcolor == "red"){
+                if (d.actcolor == "Red"){
                     return '#FF0000';
                 }
-                else if (d.actcolor == "green"){
+                else if (d.actcolor == "Green"){
                     return '#009933';
                 }
-                else if (d.actcolor == "yellow"){
+                else if (d.actcolor == "Yellow"){
                     return '#ffd633';
                 }
-                else if (d.actcolor == "orange"){
+                else if (d.actcolor == "Orange"){
                     return '#ff8000';
                 }
             })
@@ -237,7 +241,9 @@ function create_graph(category) {
             });
     });
 }
-
+function zoomed() {
+    circle.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+}
 function tick(e) {
     circle.each(gravity(.2 * e.alpha))
         .each(collide(.5))
