@@ -16,7 +16,7 @@ div.tooltip {
     line-height: 1;
     border-right: 10px;
     top: 100px;
-    background: #FF4500;
+    background: #ff9966;
     border-radius: 15px 50px 30px 5px;
     color: #000;
     display: block;
@@ -34,7 +34,13 @@ div.tooltip {
     -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
 }
-
+div.tooltip img{
+    float: middle;
+    width: auto;
+    height: auto;
+    position: relative;
+    margin-left: 50px;
+}
 /*===========Slider CSS================*/
 body {
     font-family: Verdana,Arial,sans-serif;
@@ -108,8 +114,8 @@ h2 {
 /*entire footer background color*/
 footer{
     width: 100%;
-    background-color: #484848;
-    padding: 200px 0px;
+    background-color: grey;
+    padding: 80px 0px;
 }
 /*Web links colors*/
 a:link {
@@ -121,17 +127,49 @@ a:visited {
 }
 /* mouse over link */
 a:hover {
-    color: gray;
+    color: black;
 }
 .footer_wrapper{
     width: 960px;
 }
 /*------------footer1--------------*/
-/*Title of first column*/
+/*Title of second column*/
 .footer1 nav h4{
+    font-weight: bold;
+    margin-top: -150px;
+    margin-left: 900px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;    
+}
+/*column content*/
+.footer1 nav ul{
+    margin-top: -10px;
+    list-style-type: circle;
+    margin-left: 900px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 17px;
+    color: #fff;
+    
+}
+.footer1 nav ul li {
+   float:middle;
+   width:300px; 
+   padding: 5px; 
+    
+}
+
+/*------------footer2--------------*/
+/*Title of first column*/
+.footer2 nav h4{
     font-weight: bold;
     margin-top: -133px;
     margin-left: 500px;
+    width: 200px;
     padding: 0;
     font-family: lucida console;
     font-weight: 400;
@@ -140,7 +178,7 @@ a:hover {
     
 }
 /* first column content*/
-.footer1 nav ul{
+.footer2 nav ul{
     margin-top: -10px;
     list-style-type: circle;
     margin-left: 500px;
@@ -152,18 +190,18 @@ a:hover {
     
 }
 /*styles block*/
-.footer1 nav ul li {
+.footer2 nav ul li {
     /*display:block;*/
    float:middle;
    width:300px; 
    padding: 5px; 
     
 }
-/*-----------footer2----------*/
+/*-----------footer_wrapper----------*/
 /*Title of second column*/
 .footer_wrapper nav h4{
     font-weight: bold;
-    margin-top: -140px;
+    margin-top: -60px;
     margin-left: 60px;
     padding: 0;
     font-family: lucida console;
@@ -187,14 +225,13 @@ a:hover {
    float:middle;
    width:300px; 
    padding: 5px; 
-    
 }
 /*-----------footer3----------*/
 /*Title of second column*/
 .footer3 nav h4{
     font-weight: bold;
-    margin-top: -163px;
-    margin-left: 900px;
+    margin-top: -160px;
+    margin-left: 1300px;
     padding: 0;
     font-family: lucida console;
     font-weight: 400;
@@ -205,7 +242,7 @@ a:hover {
 .footer3 nav ul{
     margin-top: -10px;
     list-style-type: circle;
-    margin-left: 900px;
+    margin-left: 1300px;
     padding: 0;
     font-family: lucida console;
     font-weight: 400;

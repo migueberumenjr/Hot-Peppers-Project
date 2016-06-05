@@ -17,7 +17,7 @@ var zoom = d3.behavior.zoom()
 var svg = d3.select("body").append("svg")
           .attr("width", width)
           .attr("height", height)
-    .call(zoom);
+          .call(zoom);
 
 
 /******All of the following code up to function create_graph() is for the buttons.
