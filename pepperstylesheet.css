@@ -22,6 +22,7 @@ div.tooltip {
     display: block;
     padding: 10px;
     position: absolute;
+    text-align: right;
     width: 210px;
     -webkit-transition: all .25s ease-out;
     -moz-transition: all .25s ease-out;
@@ -39,7 +40,7 @@ div.tooltip img{
     width: auto;
     height: auto;
     position: relative;
-    margin-left: 50px;
+    
 }
 /*===========Slider CSS================*/
 body {

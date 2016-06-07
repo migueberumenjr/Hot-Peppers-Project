@@ -1,22 +1,19 @@
 //Define Margin
-var width = document.getElementById('container').offsetWidth,
+var width = document.getElementById('container').offsetWidth-30,
     height = 1000,
-    padding = 6 // separation between nodes
-    maxRadius = 12;
+    padding = 6, // separation between nodes
+    maxRadius = 70, // maximum size of a circle
+    minRadius = 3;
+
+var svg = d3.select("body").append("svg")
+          .attr("width", width)
+          .attr("height", height);
 
 var path,circle,force,nodes,locations,color,m,n,newlocations;
 
 var div = d3.select("body").append("div")
     .attr('class', 'tooltip')
     .style("opacity", 0);
-
-var svg = d3.select("body").append("svg")
-          .attr("width", width)
-          .attr("height", height);
-function roundAvg(min,max){
-    var avg = (min + max)/2;
-    return Math.round(avg);
-}
 
 /******All of the following code up to function create_graph() is for the buttons.
     The same code is copied in the codeChange function because it doesn't
@@ -25,7 +22,7 @@ function roundAvg(min,max){
 var bWidth= 100; //button width
 var bHeight= 65; //button height
 var bSpace= 20; //space between buttons
-var x0= document.getElementById('container').offsetWidth/2-170; //x offset
+var x0= document.getElementById('container').offsetWidth/2-230; //x offset
 var y0= 10; //y offset
 
 //button labels
@@ -49,18 +46,7 @@ var buttonGroups= allButtons.selectAll("g.button")
     .style("cursor","pointer")
     .on("click",function(d,i) {
         updateButtonColors(d3.select(this), d3.select(this.parentNode))
-        if (d === "Color")  {
-            codeChange("color");
-        }
-        else if (d === "Region") {
-            codeChange("region");
-        }
-        else if (d === "Scoville") {
-            codeChange("scoville");
-        }
-        else {
-            codeChange("species");
-        }
+        codeChange(d)
     })
     .on("mouseover", function() {
         if (d3.select(this).select("rect").attr("fill") != pressedColor) {
@@ -123,23 +109,29 @@ function create_graph(category) {
         locations = [];
         
         data.forEach(function(d) {
-            if (category === "region") {
+            if (category === "Region") {
                 locations.push(d.region);
                 n = n + 1;
             }
-            if (category === "species") {
+            if (category === "Species") {
                 locations.push(d.species);
                 n = n + 1;
             }
-            if (category === "color") {
+            if (category === "Color") {
                 locations.push(d.color);
                 n = n + 1;
             }
-             if (category === "scoville") {
-                locations.push(roundAvg(d.min, d.max));
+            if (category === "Scoville") {
+                locations.push(d.max);
                 n = n + 1;
             }
         });
+        
+        var minSpicy = d3.min(data, function(d){ return d.max; });
+        var maxSpicy = d3.max(data, function(d){ return d.max; });
+        var radiusScale = d3.scale.sqrt()
+            .domain([minSpicy, maxSpicy])
+            .range([minRadius,maxRadius]);
 
         newlocations = locations.filter(function(elem, pos) {
             return locations.indexOf(elem) == pos;
@@ -159,22 +151,23 @@ function create_graph(category) {
 
         var x = d3.scale.ordinal()
             .domain(newlocations)
-            .rangePoints([0, width], 1),
+            .rangePoints([100, width-100], 1),
 
             legend = d3.svg.axis()
                 .scale(x)
                 .orient("top")
         
         nodes = data.map(function(d) {
-            if (category === "region")
+            if (category === "Region")
                 var i = newlocations.indexOf(d.region);
-            if (category == "species")
+            if (category == "Species")
                 var i = newlocations.indexOf(d.species);
-            if (category == "color")
+            if (category == "Color")
                 var i = newlocations.indexOf(d.color);
-            if (category == "scoville")
-                var i = newlocations.indexOf(roundAvg(d.min, d.max));
+            if (category == "Scoville")
+                var i = newlocations.indexOf(d.max);
             v = d.max;
+            
             return {
                 name: d.name,
                 min: d.min,
@@ -183,7 +176,7 @@ function create_graph(category) {
                 region: d.region,
                 species: d.species,
                 actcolor: d.color,
-                radius: Math.log(v*0.1)*2,
+                radius: radiusScale(d.max),
                 color: color(i),
                 cx: x(newlocations[i]),
                 cy: height / 2,
@@ -207,36 +200,20 @@ function create_graph(category) {
         gLegend.selectAll(".tick text")
             .attr("fill", function(d, i) {
                 return '#000000';
-            });
+            })
+            .attr("transform", "rotate(45)");
 
         circle = svg.append("g").selectAll("circle")
             .data(nodes)
             .enter().append("circle")
             .style("fill", function(d){
-                if (d.actcolor == "Red"){
-                    return 'Red';
-                }
-                else if (d.actcolor == "Green"){
-                    return 'Green';
-                }
-                else if (d.actcolor == "Yellow"){
-                    return 'Yellow';
-                }
-                else if (d.actcolor == "Orange"){
-                    return 'Orange';
-                }
-                else if (d.actcolor == "Purple"){
-                    return 'Purple';
-                }
-                else if (d.actcolor == "Brown"){
-                    return 'Brown';
-                }
+                return d.actcolor;
             })
             .on('mouseover', function(d) {
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div.html("<img src=" + d.picture + ">" + "<br/>" + d.name + "<br/>Minimum SHU: " + d.min + "<br/>Maximum SHU: " + d.max + "<br/>Average SHU: " + d.avg + "<br/>Region: " + d.region + "<br/>Species: " + d.species + "<br/>Color: " + d.actcolor + "<br/>")
+                div.html("<center><img src=" + d.picture + "></center>" + "<br/><center>" + d.name + "</center><br/><left>Minimum SHU:</left> " + d.min + "<br/><left>Maximum SHU:</left> " + d.max + "<br/><left>Average SHU:</left> " + d.avg + "<br/><left>Region:</left> " + d.region + "<br/><left>Species:</left> " + d.species + "<br/><left>Color:</left> " + d.actcolor + "<br/>")
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY) + "px");
             })
