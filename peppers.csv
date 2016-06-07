@@ -1,21 +1,45 @@
-name,min,max,species,origin,color,picture
-Banana pepper,0,500,Annuum,South America,Yellow,BananaPepper.png
-Anaheim pepper,500,2500,Annuum,Mexico,Green,AnaheimPepper.png
-Fresno pepper,2500,10000,Annuum,USA,Red,FresnoPepper.png
-Thai pepper,50000,100000,Annuum,Thailand,Red,ThaiPepper.png
-Ghost pepper,855000,1041427,Chinense,India,Red,GhostPepper.png
-Poblano pepper,1000,1500,Annuum,Mexico,Green,PoblanoPepper.png
-Guindilla pepper,1000,2000,Annuum,Spain,Green,GuindillaPepper.png
-Peppadew pepper,1100,1200,Baccatum,Africa,Red,PeppadewPepper.png
-Hatch pepper,1000,8000,Annuum,USA,Green,HatchPepper.png
-Cherry bomb pepper,2500,5000,Annuum,USA,Red,CherryBombPepper.png
-Jalapeno pepper,2500,8000,Annuum,Mexico,Green,JalapenoPepper.png
-Chipotle pepper,2500,8000,Annuum,Mexico,Red,ChipotlePepper.png
-Fish pepper,5000,30000,Annuum,USA,Red,FishPepper.png
-Serrano pepper,10000,23000,Annuum,USA,Green,SerranoPepper.png
-Chile de arbol,15000,30000,Annuum,Mexico,Red,ChileDeArbol.png
-Tabasco pepper,30000,50000,Frutescens,Costa Rica,Red,TabascoPepper.png
-Cayenne pepper,30000,50000,Annuum,French Guyana,Red,CayennePepper.png
-Datil pepper,100000,300000,Chinense,USA,Yellow,DatilPepper.png
-Habanero pepper,100000,350000,Chinense,South America,Orange,HabaneorPepper.png
-Trinidad moruga scorpion,1200000,2000000,Chinense,Trinidad,Red,TrinidadMorugaScorpion.png
+name,min,max,species,region,country,color,picture
+Bell Pepper,0,0,Annuum,North America,Mexico,Red,BellPepper.png
+Gypsy Pepper,0,0,Annuum,North America,USA,Yellow,GypsyPepper.png
+Purple Beauty Pepper,0,0,Annuum,South America,N/A,Purple,PurpleBeautyPepper.png
+Banana Pepper,0,500,Annuum,South America,N/A,Yellow,BananaPepper.png
+Pepperoncini Pepper,100,500,Annuum,Southern Europe,Italy,Green,PepperonciniPepper.png
+Piquillo Pepper,500,1000,Annuum,West Europe,Spain,Red,PiquilloPepper.png
+Beaver Dam Pepper,500,1000,Annuum,North America,USA,Red,BeaverDamPepper.png
+Peppadew pepper,1100,1200,Baccatum,South Africa,South Africa,Red,PeppadewPepper.png
+Ancho Pepper,1000,1500,Annuum,North America,Mexico,Brown,AnchoPepper.png
+Poblano Pepper,1000,1500,Annuum,North America,Mexico,Green,PoblanoPepper.png
+Guindilla Pepper,1000,2000,Annuum,West Europe,Spain,Green,GuindillaPepper.png
+Padron Pepper,500,2500,Annuum,West Europe,Spain,Green,PadronPepper.png
+Anaheim Pepper,500,2500,Annuum,North America,Mexico,Green,AnaheimPepper.png
+Mulato Pepper,2500,3000,Annuum,North America,Mexico,Brown,MulatoPepper.png
+Cherry Bomb Pepper,2500,5000,Annuum,North America,USA,Red,CherryBombPepper.png
+Hatch Pepper,1000,8000,Annuum,North America,USA,Green,HatchPepper.png
+Jalapeno Pepper,2500,8000,Annuum,North America,Mexico,Green,JalapenoPepper.png
+Chipotle Pepper,2500,8000,Annuum,North America,Mexico,Red,ChipotlePepper.png
+Black Hungarian Pepper,5000,10000,Annuum,Central Europe,Hungary,Black,BlackHungarianPepper.png
+Peter Pepper,10000,23000,Annuum,North America,USA,Orange,PeterPepper.png
+Serrano Pepper,10000,23000,Annuum,North America,USA,Green,SerranoPepper.png
+Bishop's Crown,5000,30000,Baccatum,Caribbean,Barbados,Green,BishopsCrown.png
+Bulgarian Carrot Pepper,5000,30000,Annuum,Central Europe,Hungary,Orange,BulgarianCarrotPepper.png
+Lemon Drop Pepper,15000,30000,Baccatum,South America,Peru,Yellow,LemonDropPepper.png
+Chile de Arbol,15000,30000,Annuum,North America,Mexico,Red,ChileDeArbol.png
+Aji Amarillo,30000,50000,Baccatum,South America,Peru,Yellow,AjiAmarillo.png
+Tabasco Pepper,30000,50000,Frutescens,Central America,Costa Rica,Red,TabascoPepper.png
+Cayenne Pepper,30000,50000,Annuum,South America,French Guiana,Red,CayennePepper.png
+Tien Tsin Pepper,50000,75000,Annuum,East Asia,China,Red,TienTsinPepper.png
+Malagueta Pepper,50000,100000,Frutescens,South America,Brazil,Red,MalaguetaPepper.png
+Thai Pepper,50000,100000,Annuum,Southeast Asia,Thailand,Red,ThaiPepper.png
+Datil Pepper,100000,300000,Chinense,North America,USA,Orange,DatilPepper.png
+Madame Jeanette Pepper,125000,325000,Chinense,South America,Suriname,Yellow,MadameJeanettePepper.png
+Fatalii Pepper,125000,400000,Chinense,Central Africa,N/A,Yellow,FataliiPepper.png
+Caribbean Red Habanero,300000,445000,Chinense,North America,Mexico,Red,CaribbeanRedHabanero.png
+Red Savina Habanero,350000,577000,Chinense,North America,USA,Red,RedSavinaHabanero.png
+Chocolate Habanero,425000,577000,Chinense,Caribbean,Jamaica,Brown,ChocolateHabanero.png
+Bhut Jolokia Chocolate,800000,1001304,Chinense,South Asia,India,Brown,BhutJolokiaChocolate.png
+Ghost Pepper,855000,1041427,Chinense,South Asia,India,Red,GhostPepper.png
+Infinity Pepper,1067286,1250000,Chinense,West Europe,UK,Red,InfinityPepper.png
+Dorset Naga,1000000,1598227,Chinense,West Europe,UK,Red,DorsetNaga.png
+Trinidad Moruga Scorpion,1200000,2000000,Chinense,Caribbean,Trinidad,Red,TrinidadMorugaScorpion.png
+Trinidad Scorpion Chocolate,1200000,2000000,Chinense,Caribbean,Trinidad,Brown,TrinidadScorpionChocolate.png
+Carolina Reaper,1400000,2200000,Chinense,North America,USA,Red,CarolinaReaper.png

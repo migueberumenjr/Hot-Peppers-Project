@@ -19,7 +19,6 @@ var svg = d3.select("body").append("svg")
           .attr("height", height)
           .call(zoom);
 
-
 /******All of the following code up to function create_graph() is for the buttons.
     The same code is copied in the codeChange function because it doesn't
     work without it
@@ -30,8 +29,8 @@ var bSpace= 20; //space between buttons
 var x0= 800; //x offset
 var y0= 10; //y offset
 
-//fontawesome button labels
-var labels= ["Color","Origin","Species"];
+//button labels
+var labels= ["Color","Region","Species"];
 
 //colors for different button states 
 var defaultColor= "Orange"
@@ -40,7 +39,7 @@ var pressedColor= "Red"
 
 //container for all buttons
 var allButtons= svg.append("g")
-    .attr("id","allButtons") 
+    .attr("id","allButtons")
 
 //groups for each button (which will hold a rect and text)
 var buttonGroups= allButtons.selectAll("g.button")
@@ -54,8 +53,8 @@ var buttonGroups= allButtons.selectAll("g.button")
         if (d === "Color")  {
             codeChange("color");
         }
-        else if (d === "Origin") {
-            codeChange("origin");
+        else if (d === "Region") {
+            codeChange("region");
         }
         else {
             codeChange("species");
@@ -109,7 +108,7 @@ function create_graph(category) {
             name: d.name,
             min: +d.min,
             max: +d.max,
-            origin: d.origin,
+            region: d.region,
             species: d.species,
             color: d.color,
             picture: d.picture
@@ -122,8 +121,8 @@ function create_graph(category) {
         locations = [];
         
         data.forEach(function(d) {
-            if (category === "origin") {
-                locations.push(d.origin);
+            if (category === "region") {
+                locations.push(d.region);
                 n = n + 1;
             }
             if (category === "species") {
@@ -145,7 +144,7 @@ function create_graph(category) {
         //Define Color
         if (category === "color") {
             color = d3.scale.ordinal()
-                .range(["#FFFF00","#008000","#FF0000", "#FFA500"]);
+                .range(["Yellow","Orange","Red","Purple","Green","Brown"]);
         }
         else {
             color = d3.scale.category20()
@@ -161,8 +160,8 @@ function create_graph(category) {
                 .orient("top")
         
         nodes = data.map(function(d) {
-            if (category === "origin")
-                var i = newlocations.indexOf(d.origin);
+            if (category === "region")
+                var i = newlocations.indexOf(d.region);
             if (category == "species")
                 var i = newlocations.indexOf(d.species);
             if (category == "color")
@@ -173,7 +172,7 @@ function create_graph(category) {
                 min: d.min,
                 max: d.max,
                 avg: (d.min + d.max)/2,
-                origin: d.origin,
+                region: d.region,
                 species: d.species,
                 actcolor: d.color,
                 radius: Math.sqrt(v) * 0.1,
@@ -207,23 +206,29 @@ function create_graph(category) {
             .enter().append("circle")
             .style("fill", function(d){
                 if (d.actcolor == "Red"){
-                    return '#FF0000';
+                    return 'Red';
                 }
                 else if (d.actcolor == "Green"){
-                    return '#009933';
+                    return 'Green';
                 }
                 else if (d.actcolor == "Yellow"){
-                    return '#ffd633';
+                    return 'Yellow';
                 }
                 else if (d.actcolor == "Orange"){
-                    return '#ff8000';
+                    return 'Orange';
+                }
+                else if (d.actcolor == "Purple"){
+                    return 'Purple';
+                }
+                else if (d.actcolor == "Brown"){
+                    return 'Brown';
                 }
             })
             .on('mouseover', function(d) {
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div.html("<img src=" + d.picture + ">" + "<br/>Name: " + d.name + "<br/>Minimum SHU: " + d.min + "<br/>Maximum SHU: " + d.max + "<br/>Average SHU: " + d.avg + "<br/>Origin: " + d.origin + "<br/>Species: " + d.species + "<br/>Color: " + d.actcolor + "<br/>")
+                div.html("<img src=" + d.picture + ">" + "<br/>Name: " + d.name + "<br/>Minimum SHU: " + d.min + "<br/>Maximum SHU: " + d.max + "<br/>Average SHU: " + d.avg + "<br/>Region: " + d.region + "<br/>Species: " + d.species + "<br/>Color: " + d.actcolor + "<br/>")
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY) + "px");
             })
