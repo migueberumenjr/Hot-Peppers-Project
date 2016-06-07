@@ -13,10 +13,6 @@ var div = d3.select("body").append("div")
 var svg = d3.select("body").append("svg")
           .attr("width", width)
           .attr("height", height);
-function roundAvg(min,max){
-    var avg = (min + max)/2;
-    return Math.round(avg);
-}
 
 /******All of the following code up to function create_graph() is for the buttons.
     The same code is copied in the codeChange function because it doesn't
@@ -136,7 +132,7 @@ function create_graph(category) {
                 n = n + 1;
             }
              if (category === "scoville") {
-                locations.push(roundAvg(d.min, d.max));
+                locations.push(d.min);
                 n = n + 1;
             }
         });
@@ -173,7 +169,7 @@ function create_graph(category) {
             if (category == "color")
                 var i = newlocations.indexOf(d.color);
             if (category == "scoville")
-                var i = newlocations.indexOf(roundAvg(d.min, d.max));
+                var i = newlocations.indexOf(d.min);
             v = d.max;
             return {
                 name: d.name,
