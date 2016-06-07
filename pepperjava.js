@@ -1,6 +1,6 @@
 //Define Margin
 var width = document.getElementById('container').offsetWidth,
-    height = 800,
+    height = 1000,
     padding = 6 // separation between nodes
     maxRadius = 12;
 
@@ -9,15 +9,10 @@ var path,circle,force,nodes,locations,color,m,n,newlocations;
 var div = d3.select("body").append("div")
     .attr('class', 'tooltip')
     .style("opacity", 0);
-//zoom 
-var zoom = d3.behavior.zoom()
-    .scaleExtent([0.5, 5])
-    .on("zoom", zoomed);
 
 var svg = d3.select("body").append("svg")
           .attr("width", width)
-          .attr("height", height)
-          .call(zoom);
+          .attr("height", height);
 
 /******All of the following code up to function create_graph() is for the buttons.
     The same code is copied in the codeChange function because it doesn't
@@ -26,7 +21,7 @@ var svg = d3.select("body").append("svg")
 var bWidth= 100; //button width
 var bHeight= 65; //button height
 var bSpace= 20; //space between buttons
-var x0= 800; //x offset
+var x0= document.getElementById('container').offsetWidth/2-170; //x offset
 var y0= 10; //y offset
 
 //button labels
@@ -83,8 +78,8 @@ buttonGroups.append("rect")
     .attr("height",bHeight)
     .attr("x",function(d,i) {return x0+(bWidth+bSpace)*i;})
     .attr("y",y0)
-    .attr("rx",5) //rx and ry give the buttons rounded corners
-    .attr("ry",5)
+    .attr("rx",10) //rx and ry give the buttons rounded corners
+    .attr("ry",10)
     .attr("fill",defaultColor)
 
 //adding text to each toggle button group, centered 
@@ -228,7 +223,7 @@ function create_graph(category) {
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div.html("<img src=" + d.picture + ">" + "<br/>Name: " + d.name + "<br/>Minimum SHU: " + d.min + "<br/>Maximum SHU: " + d.max + "<br/>Average SHU: " + d.avg + "<br/>Region: " + d.region + "<br/>Species: " + d.species + "<br/>Color: " + d.actcolor + "<br/>")
+                div.html("<img src=" + d.picture + ">" + "<br/>" + d.name + "<br/>Minimum SHU: " + d.min + "<br/>Maximum SHU: " + d.max + "<br/>Average SHU: " + d.avg + "<br/>Region: " + d.region + "<br/>Species: " + d.species + "<br/>Color: " + d.actcolor + "<br/>")
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY) + "px");
             })
@@ -248,9 +243,6 @@ function create_graph(category) {
             });
     } 
 )}
-function zoomed() {
-    circle.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-}
            
 function tick(e) {
     circle.each(gravity(.2 * e.alpha))
