@@ -216,7 +216,7 @@ function create_graph(category) {
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div.html("<center><img src=" + d.picture + "></center>" + "<br/><center>" + d.name + "</center><br/>Minimum SHU: <right>" + d.min + "</right><br/>Maximum SHU: <right>" + d.max + "</right><br/>Average SHU: <right>" + d.avg + "</right><br/>Region: <right>" + d.region + "</right><br/>Country: <right>" + d.country + "</right><br/>Species: <right>" + d.species + "</right><br/>Color: <right>" + d.actcolor + "</right>")
+                div.html("<center>" + d.name + "</center><br/><center><img src=" + d.picture + "></center>" + "<br/>Minimum SHU: <right>" + d.min + "</right><br/>Maximum SHU: <right>" + d.max + "</right><br/>Average SHU: <right>" + d.avg + "</right><br/>Region: <right>" + d.region + "</right><br/>Country: <right>" + d.country + "</right><br/>Species: <right>" + d.species + "</right><br/>Color: <right>" + d.actcolor + "</right>")
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY-230) + "px");
             })
