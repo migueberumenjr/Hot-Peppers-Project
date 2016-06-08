@@ -90,6 +90,8 @@ buttonGroups.append("text")
     .attr("fill","black")
     .text(function(d) {return d;})
 
+codeChange("Scoville");
+
 function create_graph(category) {
     d3.csv("peppers.csv", function(d) {
         return {
@@ -144,13 +146,10 @@ function create_graph(category) {
             return scovilleLocations.indexOf(elem) == pos;
         }); 
         
-        console.log(scovilleLocations);
-        console.log(newlocations);
-
 
         var x = d3.scale.ordinal()
             .domain(scovilleLocations)
-            .rangePoints([100, width-100], 1),
+            .rangePoints([150, width-100], 1),
 
             legend = d3.svg.axis()
                 .scale(x)
@@ -169,33 +168,49 @@ function create_graph(category) {
         
         nodes = data.map(function(d) {
             var j = scovilleLocations.indexOf(d.max);
-            if (category === "Region")
-                var i = newlocations.indexOf(d.region);
-            if (category == "Species")
-                var i = newlocations.indexOf(d.species);
-            if (category == "Color")
-                var i = newlocations.indexOf(d.color);
-            if (category == "Scoville")
+            if (category == "Scoville") {
                 var i = newlocations.indexOf(d.max);
-            v = d.max;
             
-            console.log(y(newlocations[i]));
-            console.log("Scovile: " + x(scovilleLocations[i]));
+                return {
+                    name: d.name,
+                    min: d.min,
+                    max: d.max,
+                    avg: (d.min + d.max)/2,
+                    region: d.region,
+                    country: d.country,
+                    species: d.species,
+                    actcolor: d.color,
+                    radius: radiusScale(d.max),
+                    cx: x(scovilleLocations[j]),
+                    cy: height /2,
+                    picture: d.picture
+                };
+            }   
             
-            return {
-                name: d.name,
-                min: d.min,
-                max: d.max,
-                avg: (d.min + d.max)/2,
-                region: d.region,
-                country: d.country,
-                species: d.species,
-                actcolor: d.color,
-                radius: radiusScale(d.max),
-                cx: x(scovilleLocations[j]),
-                cy: y(newlocations[i]),
-                picture: d.picture
-            };
+            else {
+            
+                if (category === "Region")
+                    var i = newlocations.indexOf(d.region);
+                if (category == "Species")
+                    var i = newlocations.indexOf(d.species);
+                if (category == "Color")
+                    var i = newlocations.indexOf(d.color);
+
+                return {
+                    name: d.name,
+                    min: d.min,
+                    max: d.max,
+                    avg: (d.min + d.max)/2,
+                    region: d.region,
+                    country: d.country,
+                    species: d.species,
+                    actcolor: d.color,
+                    radius: radiusScale(d.max),
+                    cx: x(scovilleLocations[j]),
+                    cy: y(newlocations[i]),
+                    picture: d.picture
+                };
+            }
         });
 
         force = d3.layout.force()
@@ -205,29 +220,41 @@ function create_graph(category) {
             .charge(0)
             .on("tick", tick)
             .start();
+        
 
         var gLegend = svg.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(0, " + height * 0.9 + ")")
+            .attr("transform", "translate(0, " + height * 0.95 + ")")
             .call(legend);
         
-        var newLegend = svg.append("g")
-            .attr("class", "y axis")
-            .attr("transform", "translate(100,0)")
-            .call(ylegend);
-        
-        
-
         gLegend.selectAll(".tick text")
             .attr("fill", function(d, i) {
                 return '#000000';
             })
             .attr("transform", "rotate(45)");
         
-        newLegend.selectAll(".tick text")
-            .attr("fill", function(d, i) {
-                return '#000000';
-            });
+        if (category !== "Scoville") {
+        
+            var newLegend = svg.append("g")
+                .attr("class", "y axis");
+            
+            if (category === "Region") {
+                newLegend.attr("transform", "translate(160,0)");
+
+            }
+            
+            else {
+                newLegend.attr("transform", "translate(100,0)")
+
+            }
+            
+            newLegend.call(ylegend);
+
+            newLegend.selectAll(".tick text")
+                .attr("fill", function(d, i) {
+                    return '#000000';
+                });
+        }
 
         circle = svg.append("g").selectAll("circle")
             .data(nodes)
@@ -260,126 +287,6 @@ function create_graph(category) {
                 var i = d3.interpolate(0, d.radius);
                 return function(t) { return d.radius = i(t); };
             });
-    } 
-)}
-
-function update_graph(category) {
-    d3.csv("peppers.csv", function(d) {
-        return {
-            name: d.name,
-            min: +d.min,
-            max: +d.max,
-            region: d.region,
-            country: d.country,
-            species: d.species,
-            color: d.color,
-            picture: d.picture
-        };
-    },
-
-    function(data) {
-        m = 0;
-        locations = [];
-        
-        data.forEach(function(d) {
-            if (category === "Region") {
-                locations.push(d.region);
-            }
-            if (category === "Species") {
-                locations.push(d.species);
-            }
-            if (category === "Color") {
-                locations.push(d.color);
-            }
-            if (category === "Scoville") {
-                locations.push(d.max);
-            }
-        });
-        
-        /* Here we figure out the maximum and minimum values of the Peppers' Scoville units */
-        var minSpicy = d3.min(data, function(d){ return d.max; });
-        var maxSpicy = d3.max(data, function(d){ return d.max; });
-        var radiusScale = d3.scale.sqrt()
-            .domain([minSpicy, maxSpicy])
-            .range([minRadius,maxRadius]);
-
-        newlocations = locations.filter(function(elem, pos) {
-            return locations.indexOf(elem) == pos;
-        }); 
-
-        //Define Color
-        if (category === "color") {
-            color = d3.scale.ordinal()
-                .range(["Yellow","Orange","Red","Purple","Green","Brown"]);
-        }
-        else {
-            color = d3.scale.category20()
-                .domain(d3.range(m));
-        }
-        
-
-        var x = d3.scale.ordinal()
-            .domain(newlocations)
-            .rangePoints([100, width-100], 1),
-
-            legend = d3.svg.axis()
-                .scale(x)
-                .orient("top")
-        
-        if (category === "Scoville") {
-            legend.tickFormat(d3.format(","));
-        }
-        
-        
-        nodes = data.map(function(d) {
-            if (category === "Region")
-                var i = newlocations.indexOf(d.region);
-            if (category == "Species")
-                var i = newlocations.indexOf(d.species);
-            if (category == "Color")
-                var i = newlocations.indexOf(d.color);
-            if (category == "Scoville")
-                var i = newlocations.indexOf(d.max);
-            v = d.max;
-            
-            return {
-                name: d.name,
-                min: d.min,
-                max: d.max,
-                avg: (d.min + d.max)/2,
-                region: d.region,
-                country: d.country,
-                species: d.species,
-                actcolor: d.color,
-                radius: radiusScale(d.max),
-                color: color(i),
-                cx: x(newlocations[i]),
-                cy: height / 2,
-                picture: d.picture
-            };
-        });
-        
-        
-        circle = svg.selectAll("circle")
-            .data(nodes)
-            .enter().append("circle")
-            .style("fill", function(d){
-                return '#000000';
-            });
-        
-        force.start();
-
-
-        var gLegend = svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0, " + height * 0.9 + ")")
-            .call(legend);
-
-        gLegend.selectAll(".tick text")
-            .attr("fill", function(d, i) {
-                return '#000000';
-            })
-            .attr("transform", "rotate(45)");
     } 
 )}
            
@@ -443,16 +350,10 @@ function clear_graph(category) {
     newlocations = [];
     svg.selectAll('.tick text').remove();
     svg.selectAll('circle').remove();
-    if (circle == null) {
-        create_graph(category);
-    }
-    else {
-//        update_graph(category)
-        create_graph(category);
-    }
     
 }
 
 function codeChange(category) {
     clear_graph(category);
+    create_graph(category);
 }
