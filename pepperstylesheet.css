@@ -1,62 +1,94 @@
+/*===========Force Layout CSS================*/
+body {font-family: "Lato", sans-serif;}
 circle {
-  stroke: #000;
+    stroke: #000;
 }
 .x.axis path {
-  fill: none;
+    fill: none;
 }
 .x.axis text {
-  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
+    font-size: 18px;
 }
 
+.y.axis path {
+    fill: none;
+}
+.y.axis text {
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
+    font-size: 18px;
+}
+/*
+
+#allButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+*/
+
+/*===========Tooltip CSS================*/
 div.tooltip {
-  position: absolute;	
-  text-align: center;	
-  width: 150px;	
-  height: 75px;		
-  padding: 2px;	
-  font: 12px sans-serif;
-  background: lightsteelblue;	
-  border: 0px;					
-  border-radius: 8px;
- /*  pointer-events: none;	This line needs to be removed */
+    pointer-events:none;
+    line-height: 1;
+    background: #ff9966;
+    border: 0px;
+    border-radius: 15px;
+    color: #000;
+    display: block;
+    padding: 10px;
+    position: absolute;
+    /*text-align: right;*/
+    width: 400px;
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -ms-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+    -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    overflow:visible;
 }
-
-text {
-  font: 11px 'Open Sans', sans-serif;
-  text-anchor: middle;
-  pointer-events: none;
-  fill: black;
+div.tooltip right{
+    float: right;
+    color: #000;
+    line-height: 1;
 }
-/*===========Slider Css================*/
+div.tooltip img{
+    float: left;
+    border-radius: 15px;
+    margin-left:1%;
+    margin-right:20px;
+    width: 120px;
+    height: 150px;
+    position: relative;
+    
+}
+/*===========Slider CSS================*/
 body {
-      font-family: Verdana,Arial,sans-serif;
-    }
-    h2 {
-      font-size: 1.2em;
-      margin: 60px 0 5px 0;
-    }
-    .wrapper {
-      width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .wrapper > div {
-      margin: 35px 0;
-    }
-    #slider8 {
-      height: 250px;
-    }
-
-
+    font-family: Verdana,Arial,sans-serif;
+}
+h2 {
+    font-size: 1.2em;
+    margin: 60px 0 5px 0;
+}
+.wrapper {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.wrapper > div {
+    margin: 35px 0;
+}
+#slider8 {
+    height: 250px;
+}
 .d3-slider-horizontal {
     height: .8em;
-}  
-
-.d3-slider-vertical {
-    width: .8em;
-    height: 100px;
-}      
-
+}    
 .d3-slider-handle {
     position: absolute;
     width: 1.2em;
@@ -67,50 +99,35 @@ body {
     background: linear-gradient(to bottom, #eee 0%, #ddd 100%);
     z-index: 3;
 }
-
 .d3-slider-handle:hover {
     border: 1px solid #999999;
 }
-
 .d3-slider-horizontal .d3-slider-handle {
     top: -.3em;
     margin-left: -.6em;
 }
-
 .d3-slider-axis {
     position: relative;
     z-index: 1;    
 }
-
 .d3-slider-axis-bottom {
     top: .8em;
 }
-
 .d3-slider-axis-right {
     left: .8em;
 }
-
 .d3-slider-axis path {
     stroke-width: 0;
     fill: none;
 }
-
 .d3-slider-axis line {
     fill: none;
     stroke: #aaa;
     shape-rendering: crispEdges;
 }
-
 .d3-slider-axis text {
     font-size: 11px;
 }
-
-.d3-slider-vertical .d3-slider-handle {
-    left: -.25em;
-    margin-left: 0;
-    margin-bottom: -.6em;      
-}
-
 .d3-slider {
     position: relative;
     font-family: sans-serif;
@@ -118,46 +135,156 @@ body {
     border: 1px solid #aaaaaa;
     z-index: 2;
 }
-/*======Tab Css==========*/
-body {font-family: "Lato", sans-serif;}
+/*-----------footer----------*/
 
-ul.tab {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+/*entire footer background color*/
+footer{
+    width: 100%;
+    background-color: grey;
+    padding: 80px 0px 10px 0px;
 }
-
-/* Float the list items side by side */
-ul.tab li {float: left;}
-
-/* Style the links inside the list items */
-ul.tab li a {
-    display: inline-block;
+/*Web links colors*/
+a:link {
+    color: white;  
+}
+/* visited link */
+a:visited {
+    color: white;
+}
+/* mouse over link */
+a:hover {
     color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 17px;
+}
+/*.footer_wrapper{
+    width: 960px;
+}*/
+/*------------footer1--------------*/
+/*Title of second column*/
+.footer1 nav h4{
+    font-weight: bold;
+    margin-top: -120px;
+    margin-left: 1100px;
+    width: 200px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;    
+}
+/*column content*/
+.footer1 nav ul{
+    margin-top: -20px;
+    list-style-type: circle;
+    margin-left: 1100px;
+    width: 300px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 12px;
+    color: #fff;
+    
+}
+.footer1 nav ul li {
+   float:middle;
+   width:300px; 
+   padding: 5px; 
+    
 }
 
-/* Change background color of links on hover */
-ul.tab li a:hover {
-    background-color: #ddd;
+/*------------footer2--------------*/
+/*Title of first column*/
+.footer2 nav h4{
+    font-weight: bold;
+    margin-top: -105px;
+    margin-left: 700px;
+    width: 200px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;
+    
 }
-
-/* Create an active/current tablink class */
-ul.tab li a:focus, .active {
-    background-color: #ccc;
+/* first column content*/
+.footer2 nav ul{
+    margin-top: -20px;
+    list-style-type: circle;
+    margin-left: 700px;
+    width: 300px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 12px;
+    color: #fff;
+    
 }
-
-/* Style the tab content */
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
+/*styles block*/
+.footer2 nav ul li {
+   float:middle;
+   width:300px; 
+   padding: 5px; 
+    
+}
+/*-----------footer_wrapper----------*/
+/*Title of second column*/
+.footer_wrapper nav h4{
+    font-weight: bold;
+    margin-top: -60px;
+    margin-left: 260px;
+    width: 200px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;    
+}
+/*column content*/
+.footer_wrapper nav ul{
+    margin-top: -20px;
+    list-style-type: circle;
+    margin-left: 260px;
+    width: 200px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 12px;
+    color: #fff;
+    
+}
+.footer_wrapper nav ul li {
+   float:middle;
+   width:300px; 
+   padding: 5px; 
+}
+/*-----------footer3----------*/
+/*Title of second column*/
+.footer3 nav h4{
+    font-weight: bold;
+    margin-top: -125px;
+    margin-left: 1500px;
+    width: 200px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;    
+}
+/*column content*/
+.footer3 nav ul{
+    margin-top: -20px;
+    list-style-type: circle;
+    margin-left: 1500px;
+    width: 200px;
+    padding: 0;
+    font-family: lucida console;
+    font-weight: 400;
+    font-size: 12px;
+    color: #fff;
+    
+}
+.footer3 nav ul li {
+   float:middle;
+   width:300px; 
+   padding: 5px; 
+    
 }
