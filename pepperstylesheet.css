@@ -23,7 +23,7 @@ div.tooltip {
     padding: 10px;
     position: absolute;
     /*text-align: right;*/
-    width: 210px;
+    width: 400px;
     -webkit-transition: all .25s ease-out;
     -moz-transition: all .25s ease-out;
     -ms-transition: all .25s ease-out;
@@ -42,9 +42,12 @@ div.tooltip right{
     line-height: 1;
 }
 div.tooltip img{
-    float: middle;
-    width: auto;
-    height: auto;
+    float: left;
+    border-radius: 15px;
+    margin-left:1%;
+    margin-right:20px;
+    width: 120px;
+    height: 150px;
     position: relative;
     
 }

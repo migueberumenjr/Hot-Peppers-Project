@@ -150,6 +150,7 @@ function create_graph(category) {
             color = d3.scale.category20()
                 .domain(d3.range(m));
         }
+        
 
         var x = d3.scale.ordinal()
             .domain(newlocations)
@@ -158,6 +159,11 @@ function create_graph(category) {
             legend = d3.svg.axis()
                 .scale(x)
                 .orient("top")
+        
+        if (category === "Scoville") {
+            legend.tickFormat(d3.format(","));
+        }
+        
         
         nodes = data.map(function(d) {
             if (category === "Region")
@@ -216,7 +222,7 @@ function create_graph(category) {
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div.html("<center>" + d.name + "</center><br/><center><img src=" + d.picture + "></center>" + "<br/>Minimum SHU: <right>" + d.min + "</right><br/>Maximum SHU: <right>" + d.max + "</right><br/>Average SHU: <right>" + d.avg + "</right><br/>Region: <right>" + d.region + "</right><br/>Country: <right>" + d.country + "</right><br/>Species: <right>" + d.species + "</right><br/>Color: <right>" + d.actcolor + "</right>")
+                div.html("<center><font size='5'>" + d.name + "</font></center><br/><center><img src=" + d.picture + "></center>" + "<br/>Minimum SHU: <right>" + (d3.format(",")(d.min)) + "</right><br/>Maximum SHU: <right>" + (d3.format(",")(d.max)) + "</right><br/>Average SHU: <right>" + (d3.format(",")(d.avg)) + "</right><br/>Region: <right>" + d.region + "</right><br/>Country: <right>" + d.country + "</right><br/>Species: <right>" + d.species + "</right><br/>Color: <right>" + d.actcolor + "</right>")
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY-230) + "px");
             })
