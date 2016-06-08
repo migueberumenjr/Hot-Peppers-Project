@@ -97,6 +97,7 @@ function create_graph(category) {
             min: +d.min,
             max: +d.max,
             region: d.region,
+            country: d.country,
             species: d.species,
             color: d.color,
             picture: d.picture
@@ -127,6 +128,7 @@ function create_graph(category) {
             }
         });
         
+        /* Here we figure out the maximum and minimum values of the Peppers' Scoville units */
         var minSpicy = d3.min(data, function(d){ return d.max; });
         var maxSpicy = d3.max(data, function(d){ return d.max; });
         var radiusScale = d3.scale.sqrt()
@@ -174,6 +176,7 @@ function create_graph(category) {
                 max: d.max,
                 avg: (d.min + d.max)/2,
                 region: d.region,
+                country: d.country,
                 species: d.species,
                 actcolor: d.color,
                 radius: radiusScale(d.max),
@@ -213,9 +216,12 @@ function create_graph(category) {
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div.html("<center><img src=" + d.picture + "></center>" + "<br/><center>" + d.name + "</center><br/><left>Minimum SHU:</left> " + d.min + "<br/><left>Maximum SHU:</left> " + d.max + "<br/><left>Average SHU:</left> " + d.avg + "<br/><left>Region:</left> " + d.region + "<br/><left>Species:</left> " + d.species + "<br/><left>Color:</left> " + d.actcolor + "<br/>")
+                div.html("<center><img src=" + d.picture + "></center>" + "<br/><center>" + d.name + "</center><br/>Minimum SHU: <right>" + d.min + "</right><br/>Maximum SHU: <right>" + d.max + "</right><br/>Average SHU: <right>" + d.avg + "</right><br/>Region: <right>" + d.region + "</right><br/>Country: <right>" + d.country + "</right><br/>Species: <right>" + d.species + "</right><br/>Color: <right>" + d.actcolor + "</right>")
                 .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY) + "px");
+                .style("top", (d3.event.pageY-230) + "px");
+            })
+            .on("mousemove", function(d) {
+                div.style("top", (event.pageY-230)+"px").style("left", (event.pageX)+"px");
             })
             .on('mouseout', function(d) {
                 div.transition()
