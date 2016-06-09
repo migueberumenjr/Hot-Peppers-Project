@@ -6,15 +6,22 @@ body {
     }
 circle {
     stroke: #000;
+    
 }
 .x.axis path {
     fill: none;
+    
 }
+
 .x.axis text {
     font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
     font-size: 18px;
+    position: absolute;
 }
 
+.label {
+    fill: "black";
+}
 .y.axis path {
     fill: none;
 }
@@ -27,6 +34,7 @@ circle {
     opacity: 0.2;
     stroke: black;
     stroke-width: 1px;
+    
 }
 
 

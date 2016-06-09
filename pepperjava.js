@@ -91,6 +91,21 @@ buttonGroups.append("text")
     .text(function(d) {return d;})
 
 codeChange("Scoville");
+         
+//x-axis
+        svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .attr("width",bWidth)
+    .attr("height",bHeight)
+    
+        .append("text")
+        .attr("class", "label")
+        .attr("y", -5)
+        .attr("x",function(d,i) {return (x0+(bWidth+bSpace)*i) + 400;})
+        .style("text-anchor", "end")
+        .attr("font-size", "16px")
+        .text("Spiciness (in scoville units) of a Pepper");
 
 function create_graph(category) {
     d3.csv("peppers.csv", function(d) {
@@ -308,66 +323,71 @@ function create_graph(category) {
         
         // draw legend colored rectangles
         circleLegend.append("rect")
-            .attr("x", width-2080)
-            .attr("y", height-320)
-            .attr("width", 350)
-            .attr("height", 180)
+            .attr("width",bWidth*3)
+            .attr("height",bHeight*3)
+            .attr("x",function(d,i) {return (x0+(bWidth+bSpace)*i) - 400;})
+            .attr("y",height-330)
             .attr("fill", "#E9ECF0")
             .style("stroke-size", "1px");
         
        circleLegend.append("circle")
             .attr("r", 70)
-            .attr("cx", width-1980)
+            .attr("cx", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("cy", height-235)
             .style("fill", "white");
         
         circleLegend.append("circle")
             .attr("r", 40)
-            .attr("cx", width-1980)
+            .attr("cx", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("cy", height-205)
             .style("fill", "white");
 
         circleLegend.append("circle")
             .attr("r", 15.8)
-            .attr("cx", width-1980)
+            .attr("cx", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("cy", height-180)
             .style("fill", "white");
         
         circleLegend.append("circle")
             .attr("r", 5)
-            .attr("cx", width-1980)
+            .attr("cx", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("cy", height-170)
             .style("fill", "white");
 
         circleLegend.append("text")
             .attr("class", "label")
-            .attr("x", width -1730)
+            .attr("id","text1")
+            .attr("x", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("y", height-170)
             .style("text-anchor", "end")
             .text("0-5,000 SHUs");
 
         circleLegend.append("text")
             .attr("class", "label")
-            .attr("x", width -1730)
+            .attr("id","text2")
+            .attr("x", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("y", height-190)
             .style("text-anchor", "end")
             .text("5,000-50,000 SHUs");
         
         circleLegend.append("text")
             .attr("class", "label")
-            .attr("x", width-1730)
+            .attr("id","text3")
+            .attr("x", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("y", height-230)
             .style("text-anchor", "end")
             .text("50,000-500,000 SHUs");
         
         circleLegend.append("text")
             .attr("class", "label")
-            .attr("x", width -1730)
+            .attr("id","text4")
+            .attr("x", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("y", height-290)
             .style("text-anchor", "end")
             .text("500,000-2 Million SHUs");
     }
 )}
+
            
 function tick(e) {
     circle.each(gravity(.2 * e.alpha))
@@ -430,6 +450,11 @@ function clear_graph(category) {
     svg.selectAll('.tick text').remove();
     svg.selectAll('.tick line').remove();
     svg.selectAll('circle').remove();
+    d3.select("#text1").remove();
+    d3.select("#text2").remove();
+    d3.select("#text3").remove();
+    d3.select("#text4").remove();
+
     
 }
 
