@@ -300,7 +300,7 @@ function create_graph(category) {
                 .duration(500)
                 .style("opacity", 0);
             });
-//            .call(force.drag);
+            .call(force.drag);
 
         circle.transition()
             .duration(1000)
