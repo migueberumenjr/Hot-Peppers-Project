@@ -299,7 +299,7 @@ function create_graph(category) {
                 div.transition()
                 .duration(500)
                 .style("opacity", 0);
-            });
+            })
             .call(force.drag);
 
         circle.transition()
