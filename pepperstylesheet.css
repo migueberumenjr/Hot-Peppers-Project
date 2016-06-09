@@ -6,7 +6,6 @@ body {
     }
 circle {
     stroke: #000;
-    
 }
 .x.axis path {
     fill: none;
@@ -101,11 +100,11 @@ a:hover {
 /*-----------footer_wrapper----------*/
 /*column content*/
 .footer_wrapper nav ul{
-    margin-top: -60px;
+    margin-top: -70px;
     list-style-type: circle;
-    margin-left: 50px;
+    margin-left: 60px;
     width: 200px;
-    padding: 0;
+    padding: 1px;
     font-family: lucida console;
     font-weight: 400;
     font-size: 12px;
@@ -114,11 +113,11 @@ a:hover {
 }
 .footer_wrapper nav {
     vertical-align: top;
-    width: 23%;
+    width: 16%;
     display: inline-block;
 }
 .footer_wrapper nav ul li {
-   float:middle;
-   width:300px; 
+   float: middle;
+   width:200px; 
    padding: 5px; 
 }

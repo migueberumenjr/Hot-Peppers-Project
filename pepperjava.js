@@ -302,14 +302,6 @@ function create_graph(category) {
             });
 //            .call(force.drag);
 
-        circle.append("image")
-            .attr("xlink:href", "http://science-all.com/images/wallpapers/picture/picture-10.jpg")
-            .attr("x", -8)
-            .attr("y", -8)
-            .attr("width", 200)
-            .attr("height", 200)
-            .call(force.drag);
-        
         circle.transition()
             .duration(1000)
             .delay(function(d, i) { return i * 10; })
