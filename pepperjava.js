@@ -1,5 +1,5 @@
 //Define Margin
-var width = document.getElementById('container').offsetWidth-30,
+var width = document.getElementById('container').offsetWidth - 30,
     height = 1000,
     padding = 6, // separation between nodes
     maxRadius = 70, // maximum size of a circle
@@ -9,7 +9,7 @@ var svg = d3.select("body").append("svg")
           .attr("width", width)
           .attr("height", height);
 
-var path,circle,force,nodes,locations,color,m,newlocations, scovilleLocations;
+var path, circle, force, nodes, locations, color, m, newlocations, scovilleLocations;
 
 var div = d3.select("body").append("div")
     .attr('class', 'tooltip')
@@ -19,96 +19,100 @@ var div = d3.select("body").append("div")
     The same code is copied in the codeChange function because it doesn't
     work without it
 ******/
-var bWidth= 100; //button width
-var bHeight= 65; //button height
-var bSpace= 20; //space between buttons
-var x0= document.getElementById('container').offsetWidth/2-230; //x offset
-var y0= 10; //y offset
+var bWidth = 100; //button width
+var bHeight = 65; //button height
+var bSpace = 20; //space between buttons
+var x0 = document.getElementById('container').offsetWidth / 2 - 230; //x offset
+var y0 = 10; //y offset
 
 //button labels
-var labels= ["Color","Region","Species","Scoville"];
+var labels = ["Color", "Region", "Species", "Scoville"];
 
 //colors for different button states 
-var defaultColor= "Orange"
-var hoverColor= "Yellow"
-var pressedColor= "Red"
+var defaultColor = "Orange";
+var hoverColor = "Yellow";
+var pressedColor = "Red";
 
 //container for all buttons
-var allButtons= svg.append("g")
-    .attr("id","allButtons")
+var allButtons = svg.append("g")
+    .attr("id", "allButtons");
 
 //groups for each button (which will hold a rect and text)
-var buttonGroups= allButtons.selectAll("g.button")
+var buttonGroups = allButtons.selectAll("g.button")
     .data(labels)
     .enter()
     .append("g")
-    .attr("class","button")
-    .style("cursor","pointer")
-    .on("click",function(d,i) {
-        updateButtonColors(d3.select(this), d3.select(this.parentNode))
+    .attr("class", "button")
+    .style("cursor", "pointer")
+    .on("click", function (d, i) {
+        "use strict";
+        updateButtonColors(d3.select(this), d3.select(this.parentNode));
         codeChange(d);
     })
-    .on("mouseover", function() {
-        if (d3.select(this).select("rect").attr("fill") != pressedColor) {
+    .on("mouseover", function () {
+        "use strict";
+        if (d3.select(this).select("rect").attr("fill") !== pressedColor) {
             d3.select(this)
                 .select("rect")
-                .attr("fill",hoverColor);
+                .attr("fill", hoverColor);
         }
     })
-    .on("mouseout", function() {
-        if (d3.select(this).select("rect").attr("fill") != pressedColor) {
+    .on("mouseout", function () {
+        "use strict";
+        if (d3.select(this).select("rect").attr("fill") !== pressedColor) {
             d3.select(this)
                 .select("rect")
-                .attr("fill",defaultColor);
+                .attr("fill", defaultColor);
         }
-    })
+    });
 
 //adding a rect to each toggle button group
 //rx and ry give the rect rounded corner
 buttonGroups.append("rect")
-    .attr("class","buttonRect")
-    .attr("width",bWidth)
-    .attr("height",bHeight)
-    .attr("x",function(d,i) {return x0+(bWidth+bSpace)*i;})
-    .attr("y",y0)
-    .attr("rx",10) //rx and ry give the buttons rounded corners
-    .attr("ry",10)
-    .attr("fill",defaultColor)
+    .attr("class", "buttonRect")
+    .attr("width", bWidth)
+    .attr("height", bHeight)
+    .attr("x", function (d, i) {"use strict"; return x0 + (bWidth + bSpace) * i; })
+    .attr("y", y0)
+    .attr("rx", 10) //rx and ry give the buttons rounded corners
+    .attr("ry", 10)
+    .attr("fill", defaultColor);
 
 //adding text to each toggle button group, centered 
 //within the toggle button rect
 buttonGroups.append("text")
-    .attr("class","buttonText")
-    .attr("font-family","FontAwesome")
+    .attr("class", "buttonText")
+    .attr("font-family", "FontAwesome")
     .attr("font-size", "22px")
-    .attr("x",function(d,i) {
-        return x0 + (bWidth+bSpace)*i + bWidth/2;
+    .attr("x", function (d, i) {
+        "use strict";
+        return x0 + (bWidth + bSpace) * i + bWidth / 2;
     })
-    .attr("y",y0+bHeight/2)
-    .attr("text-anchor","middle")
-    .attr("dominant-baseline","central")
-    .attr("fill","black")
-    .text(function(d) {return d;})
+    .attr("y", y0 + bHeight / 2)
+    .attr("text-anchor", "middle")
+    .attr("dominant-baseline", "central")
+    .attr("fill", "black")
+    .text(function (d) {"use strict"; return d; });
 
 codeChange("Scoville");
          
 //x-axis
-        svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .attr("width",bWidth)
-    .attr("height",bHeight)
-    
-        .append("text")
-        .attr("class", "label")
-        .attr("y", -5)
-        .attr("x",function(d,i) {return (x0+(bWidth+bSpace)*i) + 400;})
-        .style("text-anchor", "end")
-        .attr("font-size", "16px")
-        .text("Spiciness (in scoville units) of a Pepper");
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .attr("width", bWidth)
+    .attr("height", bHeight)
+    .append("text")
+    .attr("class", "label")
+    .attr("y", -5)
+    .attr("x", function (d, i) {"use strict"; return (x0 + (bWidth + bSpace) * i) + 400; })
+    .style("text-anchor", "end")
+    .attr("font-size", "16px")
+    .text("Spiciness (in scoville units) of a Pepper");
 
 function create_graph(category) {
-    d3.csv("peppers.csv", function(d) {
+    "use strict";
+    d3.csv("peppers.csv", function (d) {
         return {
             name: d.name,
             min: +d.min,
@@ -121,11 +125,11 @@ function create_graph(category) {
         };
     },
 
-    function(data) {
+    function (data) {
         locations = [];
         scovilleLocations = [];
         
-        data.forEach(function(d) {
+        data.forEach(function (d) {
             if (category === "Region") {
                 locations.push(d.region);
             }
@@ -146,33 +150,33 @@ function create_graph(category) {
         /* Here we figure out the maximum and minimum values of the Peppers' Scoville units */
         
         
-        var minSpicy = d3.min(data, function(d){ return d.max; });
-        var maxSpicy = d3.max(data, function(d){ return d.max; });
+        var minSpicy = d3.min(data, function (d) { return d.max; });
+        var maxSpicy = d3.max(data, function (d) { return d.max; });
         var radiusScale = d3.scale.sqrt()
             .domain([minSpicy, maxSpicy])
-            .range([minRadius,maxRadius]);
+            .range([minRadius, maxRadius]);
 
         newlocations = locations.filter(function(elem, pos) {
-            return locations.indexOf(elem) == pos;
+            return locations.indexOf(elem) === pos;
         });
 
         
-        scovilleLocations = scovilleLocations.filter(function(elem, pos) {
-            return scovilleLocations.indexOf(elem) == pos;
+        scovilleLocations = scovilleLocations.filter(function (elem, pos) {
+            return scovilleLocations.indexOf(elem) === pos;
         }); 
         
 
         var x = d3.scale.ordinal()
             .domain(scovilleLocations)
-            .rangePoints([150, width-100], 1),
+            .rangePoints([150, width - 100], 1),
 
             legend = d3.svg.axis()
                 .scale(x)
-                .orient("top")
+                .orient("top");
         
         var y = d3.scale.ordinal()
             .domain(newlocations)
-            .rangePoints([100, height-150], 1),
+            .rangePoints([100, height - 150], 1),
 
             ylegend = d3.svg.axis()
                 .scale(y)
@@ -320,31 +324,36 @@ function create_graph(category) {
             .attr("x",function(d,i) {return (x0+(bWidth+bSpace)*i) - 400;})
             .attr("y",height-330)
             .attr("fill", "#E9ECF0")
+            .attr("fill-opacity", "0.0")
             .style("stroke-size", "1px");
         
        circleLegend.append("circle")
             .attr("r", 70)
             .attr("cx", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("cy", height-235)
-            .style("fill", "white");
+            .style("fill", "white")
+            .style("fill-opacity", "0.4");
         
         circleLegend.append("circle")
             .attr("r", 40)
             .attr("cx", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("cy", height-205)
-            .style("fill", "white");
+            .style("fill", "white")
+            .style("fill-opacity", "0.0");
 
         circleLegend.append("circle")
             .attr("r", 15.8)
             .attr("cx", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("cy", height-180)
-            .style("fill", "white");
+            .style("fill", "white")
+            .style("fill-opacity", "0.0");
         
         circleLegend.append("circle")
             .attr("r", 5)
             .attr("cx", function(d,i) {return (x0+(bWidth+bSpace)*i) - 200;})
             .attr("cy", height-170)
-            .style("fill", "white");
+            .style("fill", "white")
+            .style("fill-opacity", "0.0");
 
         circleLegend.append("text")
             .attr("class", "label")
